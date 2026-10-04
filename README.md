@@ -1,5 +1,7 @@
 # Seltene Ereignisse: Multilevel-Splitting (Streamlit-Demo)
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-splitting-demo.streamlit.app/)**
+
 Interaktive Demo zur **Simulation sehr seltener Ereignisse** am Terminal-Gate. **Neuntes Stück der Konzepte-Linie „Warteschlangentheorie und Simulation“**
 im Portfolio von [Sebastian Hanisch](https://sebastianhanisch.net) (Operations Research und Machine Learning): ein Verfahren, ein wachsendes Beispiel, jedes
 Folgestück hebt genau eine Annahme auf.
