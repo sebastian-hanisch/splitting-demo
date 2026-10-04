@@ -226,7 +226,7 @@ st.markdown(
 |---|---|---|
 | **Die Zahl der Belegten beschreibt den Weg zum Ereignis** | Hier ist die Stufenfunktion offensichtlich. Bei Netzen oder Prioritäten ist sie nicht vorgegeben, und eine schlechte Wahl macht Splitting wertlos. | kein Folgestück |
 | **Splitting ist das richtige Verfahren** | Importance Sampling (Raten umkehren) kommt ohne Entartung der Ahnenreihen aus, braucht aber ein passendes Maß; hier nicht gerechnet. | kein Folgestück |
-| **Dauer exponentiell, fest oder gleichverteilt** | Bei schweren Schwänzen der Dauer ändern sich Stufenwahrscheinlichkeiten und Streuung; die Formel für den Verlust bleibt, die Schätzung nicht. | **M/G/1, Kingman-Näherung** (Folgestück) |
+| **Dauer exponentiell, fest oder gleichverteilt** | Bei schweren Schwänzen der Dauer ändern sich Stufenwahrscheinlichkeiten und Streuung; die Formel für den Verlust bleibt, die Schätzung nicht. | **[M/G/1, Kingman-Näherung](https://sebastianhanisch-mg1-kingman-demo.streamlit.app/)** |
 | **Alle Lkw gleich wichtig** | Bei Prioritäten gibt es je Klasse einen Verlust, das Ereignis hängt vom Zustand beider Klassen ab. | **Prioritätsklassen** (Folgestück) |
 | **Konstante Ankunftsrate** | Bei Wellen ist der seltene Verlust ein Spitzenereignis; der Zyklus „bis leer“ gibt es nicht mehr. | **[Zeitvariable Ankünfte](https://sebastianhanisch-time-varying-arrivals-demo.streamlit.app/)** |
 | **Ein Gate** | In Netzen läuft der Verlust in die nächste Station; die Stufenfunktion hat mehrere Dimensionen. | **Jackson-Netze** (Folgestück) |

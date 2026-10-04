@@ -88,7 +88,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 
 | Annahme | Folgestück |
 |---|---|
-| Dauer exponentiell, fest oder gleichverteilt | M/G/1, Kingman-Näherung |
+| Dauer exponentiell, fest oder gleichverteilt | [M/G/1, Kingman-Näherung](https://github.com/sebastian-hanisch/mg1-kingman-demo) |
 | Alle Lkw gleich wichtig | Prioritätsklassen |
 | Konstante Ankunftsrate | [Zeitvariable Ankünfte](https://github.com/sebastian-hanisch/time-varying-arrivals-demo) |
 | Ein Gate | Jackson-Netze |
