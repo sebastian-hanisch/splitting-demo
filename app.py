@@ -229,7 +229,7 @@ st.markdown(
 | **Dauer exponentiell, fest oder gleichverteilt** | Bei schweren Schwänzen der Dauer ändern sich Stufenwahrscheinlichkeiten und Streuung; die Formel für den Verlust bleibt, die Schätzung nicht. | **[M/G/1, Kingman-Näherung](https://sebastianhanisch-mg1-kingman-demo.streamlit.app/)** |
 | **Alle Lkw gleich wichtig** | Bei Prioritäten gibt es je Klasse einen Verlust, das Ereignis hängt vom Zustand beider Klassen ab. | **[Prioritätsklassen](https://sebastianhanisch-priority-queue-demo.streamlit.app/)** |
 | **Konstante Ankunftsrate** | Bei Wellen ist der seltene Verlust ein Spitzenereignis; der Zyklus „bis leer“ gibt es nicht mehr. | **[Zeitvariable Ankünfte](https://sebastianhanisch-time-varying-arrivals-demo.streamlit.app/)** |
-| **Ein Gate** | In Netzen läuft der Verlust in die nächste Station; die Stufenfunktion hat mehrere Dimensionen. | **Jackson-Netze** (Folgestück) |
+| **Ein Gate** | In Netzen läuft der Verlust in die nächste Station; die Stufenfunktion hat mehrere Dimensionen. | **[Jackson-Netze](https://sebastianhanisch-jackson-network-demo.streamlit.app/)** |
 """
 )
 st.caption(

@@ -92,7 +92,7 @@ Jede dieser Annahmen hebt ein Folgestück der Linie auf:
 | Dauer exponentiell, fest oder gleichverteilt | [M/G/1, Kingman-Näherung](https://github.com/sebastian-hanisch/mg1-kingman-demo) |
 | Alle Lkw gleich wichtig | [Prioritätsklassen](https://github.com/sebastian-hanisch/priority-queue-demo) |
 | Konstante Ankunftsrate | [Zeitvariable Ankünfte](https://github.com/sebastian-hanisch/time-varying-arrivals-demo) |
-| Ein Gate | Jackson-Netze |
+| Ein Gate | [Jackson-Netze](https://github.com/sebastian-hanisch/jackson-network-demo) |
 
 Kein Folgestück: Wahl der Stufenfunktion für andere Systeme, Importance Sampling.
 
