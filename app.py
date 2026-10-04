@@ -227,13 +227,13 @@ st.markdown(
 | **Die Zahl der Belegten beschreibt den Weg zum Ereignis** | Hier ist die Stufenfunktion offensichtlich. Bei Netzen oder Prioritäten ist sie nicht vorgegeben, und eine schlechte Wahl macht Splitting wertlos. | kein Folgestück |
 | **Splitting ist das richtige Verfahren** | Importance Sampling (Raten umkehren) kommt ohne Entartung der Ahnenreihen aus, braucht aber ein passendes Maß; hier nicht gerechnet. | kein Folgestück |
 | **Dauer exponentiell, fest oder gleichverteilt** | Bei schweren Schwänzen der Dauer ändern sich Stufenwahrscheinlichkeiten und Streuung; die Formel für den Verlust bleibt, die Schätzung nicht. | **[M/G/1, Kingman-Näherung](https://sebastianhanisch-mg1-kingman-demo.streamlit.app/)** |
-| **Alle Lkw gleich wichtig** | Bei Prioritäten gibt es je Klasse einen Verlust, das Ereignis hängt vom Zustand beider Klassen ab. | **Prioritätsklassen** (Folgestück) |
+| **Alle Lkw gleich wichtig** | Bei Prioritäten gibt es je Klasse einen Verlust, das Ereignis hängt vom Zustand beider Klassen ab. | **[Prioritätsklassen](https://sebastianhanisch-priority-queue-demo.streamlit.app/)** |
 | **Konstante Ankunftsrate** | Bei Wellen ist der seltene Verlust ein Spitzenereignis; der Zyklus „bis leer“ gibt es nicht mehr. | **[Zeitvariable Ankünfte](https://sebastianhanisch-time-varying-arrivals-demo.streamlit.app/)** |
 | **Ein Gate** | In Netzen läuft der Verlust in die nächste Station; die Stufenfunktion hat mehrere Dimensionen. | **Jackson-Netze** (Folgestück) |
 """
 )
 st.caption(
-    "Verwandt im Portfolio: [erlang-b-demo](https://sebastianhanisch-erlang-b-demo.streamlit.app/) (Stück 8: der Verlust, Erlang B, und seine Unempfindlichkeit), "
+    "Verwandt im Portfolio: [markov-queue-demo](https://sebastianhanisch-markov-queue-demo.streamlit.app/) (Zusatzstück: die Zeit bis zum ersten Verlust, bis 20 Spuren exakt aus der Kette, wo die Simulation sie nie erlebt), [erlang-b-demo](https://sebastianhanisch-erlang-b-demo.streamlit.app/) (Stück 8: der Verlust, Erlang B, und seine Unempfindlichkeit), "
     "[output-analysis-demo](https://sebastianhanisch-output-analysis-demo.streamlit.app/) (Stück 2: Wiederholungen, Streuung und Konfidenzintervalle), "
     "[mm1-queue-demo](https://sebastianhanisch-mm1-queue-demo.streamlit.app/) (Stück 1: der Aufwand für Genauigkeit bei starker Auslastung) und die "
     "Rettungsdienst-Demo [ems-demo](https://sebastianhanisch-ems-demo.streamlit.app/) (Verlustsystem als Hypercube-Modell)."
