@@ -45,7 +45,7 @@ Alle Zahlen stehen in `tests/test_claims.py`. Angebot 3 Erlang; Verlust bei 10 /
 | Was sieht die gewöhnliche Simulation? | Läufe ohne einen einzigen Verlust von 16 (Budget 400 000 / 4 000 000 Ereignisse): bei 10 Spuren **0 / 0**, bei 15 Spuren **13 / 5**, bei 20 Spuren **16 / 16**. Mittel/exakt bei 10 Spuren 1.02 / 1.00, bei 15 Spuren 2.29 / 1.26 (wenige Treffer). |
 | Splitting bei mäßiger Seltenheit? | 10 Spuren: in allen sechs Zellen Mittel/exakt **0.95 bis 1.02**, Streuung **5 % bis 20 %**. Sie sinkt mit der Teilchenzahl. |
 | Bei 15 Spuren (5.5·10⁻⁷)? | 4000 Teilchen: Mittel/exakt 0.94 (Streuung 17 %) exponentiell, 1.00 (22 %) fest. Streuung exponentiell 85 / 58 / 17 % bei 250 / 1000 / 4000 Teilchen. |
-| Bei 20, 25, 30 Spuren? | **Unzuverlässig.** 4000 Teilchen, Mittel/exakt (Streuung): 20 Spuren 0.79 (41 %) exponentiell, 0.84 (42 %) fest; 25 Spuren 2.23 (281 %) / 1.11 (116 %); 30 Spuren 0.61 (156 %) / 1.02 (131 %). Das Vorzeichen der Abweichung wechselt: schwere Schwänze. |
+| Bei 20, 25, 30 Spuren? | **Unzuverlässig.** 4000 Teilchen, Mittel/exakt (Streuung): 20 Spuren 0.79 (41 %) exponentiell, 0.84 (42 %) fest; 25 Spuren 2.23 (281 %) / 1.11 (116 %); 30 Spuren 0.61 (156 %) / 1.02 (131 %). Das Vorzeichen der Abweichung wechselt: schwere Tails. |
 | Was ist die Entartung? | Verschiedene Wurzeln auf der letzten Stufe (von 4000 Teilchen) bei 10 / 15 / 20 / 25 / 30 Spuren: **400 / 119 / 36 / 12 / 5**, bei 1000 Teilchen 104 / 29 / 10 / 3.5 / 2.2. Bei 30 Spuren und 4000 Teilchen stammen alle Teilchen der letzten Stufe von 0.13 % der Wurzeln. |
 | Was spart Splitting? | Für ±10 % bräuchte gewöhnliche Simulation bei 15 Spuren 3.7·10⁸ Ereignisse, Splitting (4000 Teilchen) 5.3·10⁶: das **69-Fache** weniger (fest 56-fach). Bei 20 Spuren 2.8·10¹² gegen 5.7·10⁷ (**4.9·10⁴-fach**, fest 7.2·10⁴). Bei 10 Spuren nur das **1.1- bis 2.1-Fache**. |
 | Wie dicht sollen die Stufen liegen? | 20 Spuren, 2000 Teilchen, Stufenabstand 1 / 2 / 3 / 5 / 8: Läufe ohne Treffer **0 / 0 / 0 / 8 / 16** von 16, Mittel/exakt 1.09 / 1.47 / 0.48 / 0.71 / 0, Ereignisse je Lauf 1.67 / 1.16 / 0.92 / 0.46 / 0.21 Mio. Gröbere Stufen sparen Ereignisse, aber ab Abstand 5 sterben die Läufe. |
@@ -56,7 +56,7 @@ Alle Zahlen stehen in `tests/test_claims.py`. Angebot 3 Erlang; Verlust bei 10 /
 
 - **Die Vorab-Messreihe war zu glatt.** Sie nannte Streuungen von 9 / 36 / 73 / 140 / 154 % für 10 bis 30 Spuren bei 2000 Teilchen, also einen gleichmäßigen Anstieg. In der Studie
   (4000 Teilchen, andere Seeds) sind es 5 / 17 / 41 / 281 / 156 %: der Anstieg ist **nicht monoton** (bei 30 Spuren weniger als bei 25), weil die Streuung selbst aus nur
-  16 Läufen geschätzt ist und bei schweren Schwänzen stark schwankt.
+  16 Läufen geschätzt ist und bei schweren Tails stark schwankt.
 - **Das Vorzeichen der Verzerrung steht nicht fest.** Die Vorab-Messreihe zeigte bei 30 Spuren Mittel/exakt 0.16 („unterschätzt“); die Studie 0.61 (4000 Teilchen) und 1.35
   (1000 Teilchen). Richtig ist nur: bei 20 Spuren und mehr ist das Mittel aus 16 Läufen nicht verlässlich, mal zu hoch, mal zu niedrig.
 - **Aufwandsfaktoren:** Die Vorab-Messreihe nannte „29-fach bei 15 Spuren, 26 000-fach bei 20“; die Studie (4000 Teilchen) 69-fach und 4.9·10⁴-fach. Die Größenordnung stimmt, die
@@ -68,7 +68,7 @@ Alle Zahlen stehen in `tests/test_claims.py`. Angebot 3 Erlang; Verlust bei 10 /
 
 - Die Stufenfunktion (Zahl der Belegten) ist hier naheliegend und wurde nicht optimiert; bei Netzen oder Prioritäten ist sie nicht vorgegeben.
 - **Importance Sampling** (Raten umkehren) ist nicht enthalten; es kommt ohne Entartung der Ahnenreihen aus, braucht aber ein passendes Maß.
-- Die Streuung ist aus 16 Läufen geschätzt und bei schweren Schwänzen unsicher; die Aufwandsangaben für Splitting bei Streuung über 100 % sind nur Größenordnungen.
+- Die Streuung ist aus 16 Läufen geschätzt und bei schweren Tails unsicher; die Aufwandsangaben für Splitting bei Streuung über 100 % sind nur Größenordnungen.
 - Die Studie gilt nur für Angebot 3 Erlang, die Verteilungen exponentiell und fest und die Teilchenzahlen 250, 1000, 4000; die App zeigt für andere Werte die nächste Zelle und
   sagt es. Gleichverteilte Dauer gibt es nur live (die Studien-Abschnitte zeigen dann die exponentiellen Zellen).
 - Splitting mit fester Teilchenzahl je Stufe (Fixed Effort); adaptive Verfahren (Stufen aus den Daten, feste Erfolgszahl) sind nicht gerechnet.

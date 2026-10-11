@@ -164,7 +164,7 @@ for cc in C.STUDY_C:
     body += (f"| {cc} | {C.fmt_sci(cells[0]['exact'])} | " + " | ".join(f"{cell_bias(x):.2f} (±{100 * cell_rel_sd(x):.0f} %)" for x in cells)
              + f" | {cells[-1]['roots'][-1]:.1f} |\n")
 st.markdown(header + body)
-st.caption("Zelle = Mittel / exakt (relative Streuung eines Laufs). Die Streuung selbst ist aus 16 Läufen geschätzt und bei schweren Schwänzen unsicher.")
+st.caption("Zelle = Mittel / exakt (relative Streuung eines Laufs). Die Streuung selbst ist aus 16 Läufen geschätzt und bei schweren Tails unsicher.")
 cb = study_cell(pre, study_c, max(C.STUDY_N), study_kind)
 st.info(
     f"Bei {study_c} Spuren (Verlust {C.fmt_sci(cb['exact'])}) und {C.fmt_int(max(C.STUDY_N))} Teilchen liegt das Mittel der 16 Läufe bei {cell_bias(cb):.2f} des exakten Werts, "
@@ -226,7 +226,7 @@ st.markdown(
 |---|---|---|
 | **Die Zahl der Belegten beschreibt den Weg zum Ereignis** | Hier ist die Stufenfunktion offensichtlich. Bei Netzen oder Prioritäten ist sie nicht vorgegeben, und eine schlechte Wahl macht Splitting wertlos. | kein Folgestück |
 | **Splitting ist das richtige Verfahren** | Importance Sampling (Raten umkehren) kommt ohne Entartung der Ahnenreihen aus, braucht aber ein passendes Maß; hier nicht gerechnet. | kein Folgestück |
-| **Dauer exponentiell, fest oder gleichverteilt** | Bei schweren Schwänzen der Dauer ändern sich Stufenwahrscheinlichkeiten und Streuung; die Formel für den Verlust bleibt, die Schätzung nicht. | **[M/G/1, Kingman-Näherung](https://sebastianhanisch-mg1-kingman-demo.streamlit.app/)** |
+| **Dauer exponentiell, fest oder gleichverteilt** | Bei schweren Tails der Dauer ändern sich Stufenwahrscheinlichkeiten und Streuung; die Formel für den Verlust bleibt, die Schätzung nicht. | **[M/G/1, Kingman-Näherung](https://sebastianhanisch-mg1-kingman-demo.streamlit.app/)** |
 | **Alle Lkw gleich wichtig** | Bei Prioritäten gibt es je Klasse einen Verlust, das Ereignis hängt vom Zustand beider Klassen ab. | **[Prioritätsklassen](https://sebastianhanisch-priority-queue-demo.streamlit.app/)** |
 | **Konstante Ankunftsrate** | Bei Wellen ist der seltene Verlust ein Spitzenereignis; der Zyklus „bis leer“ gibt es nicht mehr. | **[Zeitvariable Ankünfte](https://sebastianhanisch-time-varying-arrivals-demo.streamlit.app/)** |
 | **Ein Gate** | In Netzen läuft der Verlust in die nächste Station; die Stufenfunktion hat mehrere Dimensionen. | **[Jackson-Netze](https://sebastianhanisch-jackson-network-demo.streamlit.app/)** |
