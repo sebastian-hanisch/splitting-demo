@@ -1,6 +1,7 @@
 """Plotly-Abbildungen der Splitting-Demo: Stufenwahrscheinlichkeiten (Schätzung gegen exakt), Überleben der Wurzeln, Streuung und Verzerrung über die
 Seltenheit, Aufwand gegen gewöhnliche Simulation, Stufenabstand. Achsen sind gesperrt (fixedrange), damit Touch-Geräte beim Scrollen nicht zoomen."""
 
+import math
 import plotly.graph_objects as go
 
 import spl_constants as C
@@ -11,6 +12,23 @@ SPLIT_COLOR = "#f58518"
 EXACT_COLOR = "#4c78a8"
 PLAIN_COLOR = "#9d9d9d"
 N_COLORS = {250: "#9ecae9", 1000: "#4c78a8", 4000: "#1f3d63"}
+
+
+def _ref_line(fig, value, text, position, axis, log=True, **line_kwargs):
+    """Referenzlinie mit Beschriftung auf einer logarithmischen Achse: die Linie liegt auf dem Datenwert, die Beschriftung braucht log10 des Werts
+    (add_hline und add_vline setzen beide auf denselben Wert, die Beschriftung sitzt dann falsch und dehnt die Achse); log=False für lineare Achsen."""
+    if log and not value > 0.0:
+        return
+    pos = math.log10(value) if log else value
+    top, left = "top" in position, "left" in position
+    if axis == "y":
+        fig.add_hline(y=value, **line_kwargs)
+        if text:
+            fig.add_annotation(xref="paper", yref="y", x=0 if left else 1, y=pos, text=text, showarrow=False, xanchor="left" if left else "right", yanchor="bottom" if top else "top")
+    else:
+        fig.add_vline(x=value, **line_kwargs)
+        if text:
+            fig.add_annotation(xref="x", yref="paper", x=pos, y=1 if top else 0, text=text, showarrow=False, xanchor="right" if left else "left", yanchor="top" if top else "bottom")
 
 
 def lock_axes(fig):
@@ -45,7 +63,7 @@ def build_roots_chart(levels, roots, n):
     """Verschiedene Wurzeln (Teilchen der ersten Stufe, aus denen die überlebenden Teilchen hervorgingen) je Stufe: die Entartung der Ahnenreihen."""
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=levels[:len(roots)], y=roots, mode="lines+markers", line=dict(color=SPLIT_COLOR, width=2.5), name="verschiedene Wurzeln"))
-    fig.add_hline(y=n, line=dict(color=PLAIN_COLOR, dash="dash"), annotation_text=f"Start: {C.fmt_int(n)} Teilchen")
+    _ref_line(fig, n, f"Start: {C.fmt_int(n)} Teilchen", "top right", "y", line=dict(color=PLAIN_COLOR, dash="dash"))
     fig.update_xaxes(title_text="Stufe (belegte Spuren)", dtick=max(1, len(levels) // 12))
     fig.update_yaxes(title_text="verschiedene Wurzeln (logarithmisch)", type="log", rangemode="tozero")
     return _base(fig, 340)
@@ -62,7 +80,7 @@ def build_relsd_chart(pre, kind):
                 xs.append(c)
                 ys.append(100 * sd)
         fig.add_trace(go.Scatter(x=xs, y=ys, mode="lines+markers", line=dict(color=N_COLORS[n], width=2.5), name=f"{C.fmt_int(n)} Teilchen je Stufe"))
-    fig.add_hline(y=100, line=dict(color=PLAIN_COLOR, dash="dash"), annotation_text="100 %")
+    _ref_line(fig, 100, "100 %", "top right", "y", line=dict(color=PLAIN_COLOR, dash="dash"))
     fig.update_xaxes(title_text="Spuren c (Verlust sinkt von 10⁻³ auf 10⁻²⁰)", tickvals=list(C.STUDY_C))
     fig.update_yaxes(title_text="relative Streuung eines Laufs (%, logarithmisch)", type="log", ticksuffix=" %")
     return _base(fig, 340)
