@@ -98,7 +98,7 @@ Kein Folgestück: Wahl der Stufenfunktion für andere Systeme, Importance Sampli
 
 ## Tests
 
-114 Tests, rund 40 Sekunden: Erlang B von Hand, Spielerruin-Stufenwahrscheinlichkeiten von Hand und gegen ein lineares System, die regenerative Zerlegung (Erlang B aus Zyklus-
+137 Tests, rund 40 Sekunden: Erlang B von Hand, Spielerruin-Stufenwahrscheinlichkeiten von Hand und gegen ein lineares System, die regenerative Zerlegung (Erlang B aus Zyklus-
 Größen), die Verteilungen der Dauer, jede Einheit des Splittings von Hand gerechnet (Teilchen bis zum Ziel, bis leer, Zeit mit allen Spuren belegt, Stufe, Busy Period,
 Stufenliste, gewöhnliche Simulation), Stufenwahrscheinlichkeiten und Zykluskenngrößen der Simulation gegen die exakten Werte, Erwartungstreue für alle drei Verteilungen, Splitting findet,
 was die gewöhnliche Simulation verpasst, Invarianten (Wurzeln können nur verschwinden), gestorbener Lauf, gleicher Seed gleiches Ergebnis, Vollständigkeit der vorgerechneten Datei,
